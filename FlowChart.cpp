@@ -1,20 +1,12 @@
-/******************************************************************************
-
-                              Online C++ Compiler.
-               Code, Compile, Run and Debug C++ program online.
-Write your code in this editor and press "Run" button to compile and execute it.
-
-*******************************************************************************/
-
 #include <iostream>
 
 using namespace std;
 
-struct {
+struct Box{
     bool Color;
     int Top;
     bool Right;
-} Box;
+} ;
 
 void CaptureValues(Box& param)
 {
@@ -29,15 +21,15 @@ void Process(Box& Input, Box& Head, bool Condition, Box& CompareTo)
     {
         if ( Input.Top)
         {
-            cout << (CompareTo.Top == Head.Top) ? "True" : "False" ;
+            cout << ((CompareTo.Top == Head.Top) ? "True" : "False" );
         }
         if( Input.Color)
         {
-            cout << (CompareTo.Color == Head.Color) ? "True" : "False" ;
+            cout << ((CompareTo.Color == Head.Color) ? "True" : "False" );
         }
         if( Input.Right)
         {
-            cout << (CompareTo.Right == Head.Right) ? "True" : "False" ;
+            cout << ((CompareTo.Right == Head.Right) ? "True" : "False") ;
         }
         cout << endl;
     }
@@ -51,7 +43,7 @@ void Process(Box& Input, Box& Head, bool Condition, Box& CompareTo)
         {
             Head.Color = (!Head.Color);
         }
-        if( Input.Bottom)
+        if( Input.Right)
         {
             Head.Right = (!Head.Right);
         }
@@ -62,20 +54,20 @@ void Process(Box& Input, Box& Head, bool Condition, Box& CompareTo)
 int main()
 {
     Box Head, CompareTo, Input;
-    bool Condition;
+    bool Condition, IsNext = false;
      
     CaptureValues(Head);
     CaptureValues(CompareTo); 
     CaptureValues(Input);
 
-    While(Input.Top != 99){
+    while(!IsNext){
         cin >> Condition;
-        Process(Input, Head, Condition);
+        Process(Input, Head, Condition, CompareTo);
         
-        std::cout <<  Head.Top << Head.Color << Head.Right; << std::endl;
-        cout << (Head.Top) ? "Top:" : "Bottom: " ;
-        cout << (Head.Color) ? "White:" : "Black: " ;
-        cout << (Head.Right) ? "Right:" : "Left: " << endl;
+        //std::cout <<  Head.Top << Head.Color << Head.Right; << std::endl;
+        cout << ((Head.Top) ? "Top:" : "Bottom: " );
+        cout << ((Head.Color) ? "White:" : "Black: ") ;
+        cout << ((Head.Right) ? "Right:" : "Left: ") << endl;
         CaptureValues(Input);
     }
      
